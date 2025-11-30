@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benfica AI Ticket Monitor - leifwhitman Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #f0f3f5; font-family: sans-serif; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-red-600 mb-4">🦅 Benfica AI Ticket Monitor</h1>
+        <p class="text-gray-600 mb-6">AI-powered ticket monitoring by leifwhitman - Product Manager Portfolio</p>
+        
+        <div class="mb-6">
+            <input type="text" id="matchInput" value="Benfica vs Sporting CP tickets" 
+                   class="w-full p-3 border rounded-lg mb-4">
+            <button id="startButton" class="bg-red-600 text-white px-6 py-3 rounded-lg">Start AI Monitoring</button>
+        </div>
+        
+        <div id="resultContainer" class="p-4 bg-gray-100 rounded-lg">
+            <p>Enter a match and click start to test the AI monitoring</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('startButton').addEventListener('click', async function() {
+            const query = document.getElementById('matchInput').value;
+            const resultContainer = document.getElementById('resultContainer');
+            
+            resultContainer.innerHTML = '<p>Testing AI search... (Backend not deployed yet)</p>';
+            
+            try {
+                // This will work after we deploy to Netlify
+                const response = await fetch('/.netlify/functions/check-tickets', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query: query, web_search: true })
+                });
+                
+                const result = await response.json();
+                resultContainer.innerHTML = '<p>Backend connected! Ready for deployment.</p>';
+            } catch (error) {
+                resultContainer.innerHTML = '<p>Backend will work after Netlify deployment</p>';
+            }
+        });
+    </script>
+</body>
+</html>

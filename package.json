@@ -1,0 +1,25 @@
+﻿{
+  "name": "benfica-ai-ticket-monitor",
+  "version": "1.0.0",
+  "description": "AI-powered ticket monitoring system - Product Manager Portfolio Project",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Build complete'",
+    "dev": "netlify dev"
+  },
+  "keywords": [
+    "ai",
+    "product-management",
+    "portfolio",
+    "ticket-monitoring",
+    "benfica"
+  ],
+  "author": "leifwhitman",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^1.0.0"
+  }
+}
